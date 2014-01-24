@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Notification test">
+    <meta name="author" content="Jørgen Nordmoen">
+
+    <title>Notification Tests</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/index.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Notification Testing Inc.</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+          </ul>
+	  <ul class="nav pull-right">
+		  <!-- notification menu starts here -->
+		  <li class="dropdown">
+		  <button class="btn btn-primary dropdown-toggle" 
+			  type="button" data-toggle="dropdown">
+			  <span class="badge" id="notification-badge">None</span>
+			  <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" 
+			  role="menu" id="notification-list">
+			  <li role="presentation" class="dropdown-header">
+			  Notifications:
+			  <button class="btn btn-xs" 
+				  id="notification-clear-btn"
+				  onclick="Notification.clearNotifications()">
+				  Clear
+			  </button>
+			  </li>
+			  <li role="presentation" class="divider"></li>
+		  </ul>
+		  </li>
+		  <!-- End notification menu -->
+	  </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="starter-template">
+	      <button class="btn btn-success"
+		      type="button"
+		      onclick="showSuccessAlert()">Show success alert</button>
+	      <button class="btn btn-info" 
+		      type="button"
+		      onclick="showInfoAlert()">Show info alert</button>
+	      <button class="btn btn-warning"
+		      type="button"
+		      onclick="showWarningAlert()">Show warning alert</button>
+	      <button class="btn btn-danger"
+		      type="button"
+		      onclick="showDangerAlert()">Show danger alert</button>
+	      <div style="hidden" id="notification-area">
+	      </div>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="notification-dialog" 
+	      tabindex="-1" role="dialog" 
+	      aria-labelledby="notification-dialog-label" 
+	      aria-hidden="true">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	<div class="modal-header">
+	<h4 class="modal-title" id="notification-dialog-title"></h4>
+	</div>
+	<div class="modal-body">
+		<div id="notification-dialog-content">
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button"
+			class="btn btn-default"
+			data-dismiss="modal">
+			Notification read</button>
+	</div>
+	</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>
+    <script src="js/Notification.js"></script>
+    <script>
+	    function showSuccessAlert(){
+		    Notification.showSuccess("Test success", "Great success");
+	    }
+	    function showInfoAlert(){
+		    console.log("Showing info alert");
+		    Notification.showInfo("Information", "None of your beeswax");
+	    }
+	    function showWarningAlert(){
+		    console.log("Showing warning alert");
+		    Notification.showWarning("Warn!", "Keep rolling rolling...");
+	    }
+	    function showDangerAlert(){
+		    console.log("Showing danger alert");
+		    Notification.showDanger("Scary!", "Boooooooooo");
+	    }
+    </script>
+  </body>
+</html>
